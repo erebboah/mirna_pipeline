@@ -14,6 +14,9 @@ Resulting microRNA-seq libraries are quantified using Qubit dsDNA HS Assay Kit (
 ## Demultiplexing
 Library structure deviates from standard Illumina, so samples must be demultiplexed with custom code. Illumina NextSeq2000 SampleSheet (e.g. for our [practice run](https://github.com/erebboah/mirna_pipeline/blob/master/ref/SampleSheet_1080.csv)) needs to specify read setup but the SampleID / Index doesn't matter since we're just going to use the "undetermined" reads.
 
+1. After sequencing is complete, transfer reads to HPC.
+```scp /home/sharing/runs/231006_VH00582_82_AACYV55M5/Analysis/1/Data/fastq/*.fastq.gz erebboah@hpc3.rcic.uci.edu:/pub/erebboah/mirna_pipeline/fastq/run_1080```
+
 ## Quantification
 
 
