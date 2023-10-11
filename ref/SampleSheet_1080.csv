@@ -1,0 +1,17 @@
+[Header],,
+FileFormatVersion,2,
+RunName,1080,
+InstrumentPlatform,NextSeq1k2k,
+,,
+[Reads],,
+Read1Cycles,75,
+Index1Cycles,6,
+,,
+[BCLConvert_Settings],,
+SoftwareVersion,3.7.4,
+BarcodeMismatchesIndex1,1,
+FastqCompressionFormat,gzip,
+,,
+[BCLConvert_Data],,
+Sample_ID,Index
+sub1,TTTTTT
