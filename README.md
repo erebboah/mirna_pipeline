@@ -16,9 +16,16 @@ Library structure deviates from standard Illumina, so samples must be demultiple
 
 1. After sequencing is complete, transfer reads to HPC.
 
-
 ```
 scp /home/sharing/runs/231006_VH00582_82_AACYV55M5/Analysis/1/Data/fastq/*.fastq.gz erebboah@hpc3.rcic.uci.edu:/pub/erebboah/mirna_pipeline/fastq/run_1080
+```
+
+2. Cat all reads to undetermined.fastq.gz and unzip, making sure you have enough space. Need 24G of space for a P1 100 cycle kit.
+
+```
+cd /pub/erebboah/mirna_pipeline/fastq/run_1080
+cat *.fastq.gz > undetermined.fastq.gz
+gunzip undetermined.fastq.gz
 ```
 
 ## Quantification
