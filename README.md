@@ -18,9 +18,7 @@ Library structure deviates from standard Illumina, so samples must be demultiple
 
 
 ```
-{
 scp /home/sharing/runs/231006_VH00582_82_AACYV55M5/Analysis/1/Data/fastq/*.fastq.gz erebboah@hpc3.rcic.uci.edu:/pub/erebboah/mirna_pipeline/fastq/run_1080
-}
 ```
 
 ## Quantification
