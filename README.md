@@ -47,7 +47,7 @@ gunzip undetermined.fastq.gz
 5. Run demultiplexing bash script: `sbatch demux_mirna.sh`. Output is demultiplexed, gzipped fastqs with sample IDs in samplesheet.csv, in the fastq directory along with undetermined.fastq.gz.
 
 ## Quantification
-### Make STAR reference - only have to do once
+### Make STAR reference - only have to do this once
 1. Download microRNA GENCODE GTFs from ENCODE portal: [vM21 mouse](https://www.encodeproject.org/files/ENCFF094ICJ/) or [v29 human](https://www.encodeproject.org/files/ENCFF470CZH/).
 
 ```
@@ -81,7 +81,7 @@ Inputs should have been generated in previous steps. You need:
    - STAR reference directory, e.g. `ref/mm10` or `ref/hg38`
    - samplesheet.csv in `scripts`
   
-Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`). Feel free to remove the sample directories to save space if you only need the final counts. Other than counts, some files you or may not be interested in are the STAR report (e.g. `ENC4_453_SB/star/Log.final.out`) and signal files to display on the UCSC genome browser (e.g. `ENC4_453_SB/star/Signal.UniqueMultiple.str1.out.wig`).
+Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`). Remove the sample directories to save space if you only need the final counts. Other than counts, some files you or may not be interested in are the STAR report (e.g. `ENC4_453_SB/star/Log.final.out`) and signal files to display on the UCSC genome browser (e.g. `ENC4_453_SB/star/Signal.UniqueMultiple.str1.out.wig`). The percent uniquely mapped reads is low because the reads are so short. On average I get ~43% multi-mapped reads, and pass ENCODE standards. For microRNA-seq, the number of multi-mapped reads and unique reads counts towards aligned reads. Feel free to poke around my old [ENCODE miRNA-seq spreadsheet](https://docs.google.com/spreadsheets/d/1qcve4QnxcMVTgyIxT3ouhblCO1y5pmKZ2B9L-TCnbBg/edit#gid=898072680) for other QC stuff.
 
 ## Analysis
 1. Concatenate counts per sample into a counts matrix. Example code in R and python from our practice run.
