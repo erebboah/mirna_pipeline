@@ -62,7 +62,12 @@ gunzip GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz
 3. Once you have the reference files, run STAR in genomeGenerate mode: `sbatch make_ref.sh`
 
 ### Trim and map reads
-Run cutadapt to trim adapters and STAR to map. Specify human or mouse in sbatch call. Human: `sbatch trim_map.sh GRCh38`. For mouse: `sbatch trim_map.sh mm10`. Inputs should have been generated in previous steps. You need:
+Run cutadapt to trim adapters and STAR to map. Specify human or mouse in sbatch call. 
+
+Human: `sbatch trim_map.sh GRCh38`
+Mouse: `sbatch trim_map.sh mm10`
+
+Inputs should have been generated in previous steps. You need:
    - Demultiplexed and gzipped fastqs in `fastq`
    - STAR reference directory, e.g. `ref/mm10` or `ref/hg38`
    - samplesheet.csv in `scripts`
