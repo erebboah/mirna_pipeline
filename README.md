@@ -93,24 +93,24 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
    
    A ) Differential gene expression between PND 14 and 2 month timepoints within females:
    ```
-   python3 run_pydeseq2.py --sex Female --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_female`
+   python3 run_pydeseq2.py --sex Female --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_female
    ```
    
    B) Differential gene expression between PND 14 and 2 month timepoints within males:
    ```
-   `python3 run_pydeseq2.py --sex Male --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_male`
+   python3 run_pydeseq2.py --sex Male --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_male
    ```
 
    To test between sex within C) PND_14 and D) PNM_02:
    
    C) Differential gene expression between females and males within PND 14 timepoint:
    ```
-   `python3 run_pydeseq2.py --sex Female Male --timepoint PND_14 --technician SB NM --group sex --output ../degs/female_vs_male_pnd14`
+   python3 run_pydeseq2.py --sex Female Male --timepoint PND_14 --technician SB NM --group sex --output ../degs/female_vs_male_pnd14
    ```
    
    D) Differential gene expression between females and males within 2 month timepoint:
    ```
-   `python3 run_pydeseq2.py --sex Female Male --timepoint PNM_02 --technician SB NM --group sex --output ../degs/female_vs_male_pnm02`
+   python3 run_pydeseq2.py --sex Female Male --timepoint PNM_02 --technician SB NM --group sex --output ../degs/female_vs_male_pnm02
    ```
 
    Inputs to `run_pydeseq2.py` must exactly match your [metadata](https://github.com/erebboah/mirna_pipeline/blob/master/ref/mirna_practice_metadata.csv).
