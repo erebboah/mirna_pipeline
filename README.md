@@ -38,14 +38,13 @@ gunzip undetermined.fastq.gz
 
 4. Edit [demux_mirna.sh](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/demux_mirna.sh) so that you are using your HPC account (change `#SBATCH -A SEYEDAM_LAB`) and your conda environment (change `source ~/miniconda3/bin/activate seqtkpython3`). As inputs, you need fastq named `undetermined.fastq` in the fastq directory of this repo (e.g. `/pub/erebboah/mirna_pipeline/fastq/`) and your [samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv) in the scripts directory (e.g. `/pub/erebboah/mirna_pipeline/scripts/`).
 
-5. Run demultiplexing bash script: `sbatch demux_mirna.sh`
+5. Run demultiplexing bash script: `sbatch demux_mirna.sh`. Output is demultiplexed fastqs named as in samplesheet.csv in the fastq directory.
 
 ## Quantification
 ### Make STAR reference 
 1. Download microRNA GENCODE GTFs from ENCODE portal: [vM21 mouse](https://www.encodeproject.org/files/ENCFF094ICJ/) or [v29 human](https://www.encodeproject.org/files/ENCFF470CZH/).
 
 ```
-cd ../ref
 wget https://www.encodeproject.org/files/ENCFF094ICJ/@@download/ENCFF094ICJ.gtf.gz
 wget https://www.encodeproject.org/files/ENCFF470CZH/@@download/ENCFF470CZH.gtf.gz
 mv ENCFF094ICJ.gtf.gz mm10_mirna.gtf
@@ -65,6 +64,11 @@ gunzip GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz
 3. Once you have the reference files, run STAR in genomeGenerate mode: `sbatch make_ref.sh`
 
 ### Trim and map reads
-1. Run cutadapt to trim adapters and STAR to map. Specify genome, e.g. for human: `sbatch trim_map.sh GRCh38`. For mouse: `sbatch trim_map.sh mm10`.
+1. Run cutadapt to trim adapters and STAR to map. Specify genome, e.g. for human: `sbatch trim_map.sh GRCh38`. For mouse: `sbatch trim_map.sh mm10`. Inputs should have been generated in previous steps. You need:
+   - Demultiplexed and gzipped fastqs in `fastq`
+   - STAR reference folder, e.g. `ref/mm10` or `ref/hg38`
+   - samplesheet.csv in `scripts`
+  
+2. Each sample will get its own output directory, named the same as the sample ID. Within sample output, there's `cutadapt` and `star` directories containing intermediate files. The actual microRNA quantifications are in `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts`).
 
 ## Downstream analysis
