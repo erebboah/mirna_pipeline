@@ -24,13 +24,12 @@ Library structure deviates from standard Illumina, so samples must be demultiple
 scp /home/sharing/runs/231006_VH00582_82_AACYV55M5/Analysis/1/Data/fastq/*.fastq.gz erebboah@hpc3.rcic.uci.edu:/pub/erebboah/mirna_pipeline/fastq/run_1080
 ```
 
-2. Cat all reads to undetermined.fastq.gz and unzip, making sure you have enough space. Need 24G of space for a P1 100 cycle kit. Remove everything but undetermined.fastq.
+2. Cat all reads to undetermined.fastq.gz and unzip, making sure you have enough space. Need 24G of space for a P1 100 cycle kit. 
 
 ```
 cd /pub/erebboah/mirna_pipeline/fastq/run_1080
 cat *.fastq.gz > undetermined.fastq.gz
 gunzip undetermined.fastq.gz
-rm *.fastq.gz
 ```
 
 3. Edit the "real" samplesheet.csv. First column is the 5' Adaptor and forward primer separated by an underscore. Second column is your desired fastq name (sample ID). No header! Preferably matches some sample ID in your metadata. 
