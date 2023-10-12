@@ -29,6 +29,8 @@ gunzip undetermined.fastq.gz
 rm *.fastq.gz
 ```
 
+3. 
+
 ## Quantification
 
 
