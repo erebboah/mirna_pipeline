@@ -35,7 +35,7 @@ rm *.fastq.gz
 
 3. Edit the "real" samplesheet.csv. First column is the 5' Adaptor and forward primer separated by an underscore. Second column is your desired fastq name (sample ID). No header! Preferably matches some sample ID in your metadata. 
 
-[Example](https://github.com/erebboah/mirna_pipeline/blob/master/ref/samplesheet.csv)
+[Example of "real" spreadsheet](https://github.com/erebboah/mirna_pipeline/blob/master/ref/samplesheet.csv)
 
 
 
