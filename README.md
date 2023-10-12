@@ -78,7 +78,7 @@ Each sample will get its own output directory, named the same as the sample ID, 
 ## Analysis
 1. Concatenate counts per sample into a counts matrix. Example code in R and python from our practice run.
 2. Convert counts to CPM (counts per million) to normalize for library depth: R and python
-3. PCA to identify outliers: R and python
+3. Principal component analysis: R and python
 4. Differential microRNA expression analysis between conditions using pyDeseq2: python
 
 ## Summary
