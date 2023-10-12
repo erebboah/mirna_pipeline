@@ -6,7 +6,7 @@ Briefly, libraries are built from 300 ng to 1 ug of total RNA. Adapters are liga
 
 Libraries are isolated from the TBE-Urea gel by agitated incubation at 70°C, 1000 RPM for 2 hours in a buffer containing 0.5 M ammonium acetate, 0.1% SDS, and 0.1 uM EDTA, then precipitated overnight in 50% isopropanol. 
 
-Libraries are quantified using Qubit dsDNA HS Assay Kit and sequenced on an Illumina NextSeq 2000 with P1 or P2 100 cycle kits as 75 bp single-end reads (SE 75/0/6/0) to ~10 M raw read depth per library. We have good results diluting pooled library to 850 pM (%Loading Concentration > 95). Submission to the ENCODE portal requires >5 M aligned reads, >300 microRNAs detected at >2 CPM, and a Spearman replicate correlation >0.85.
+Libraries are quantified using Qubit dsDNA HS Assay Kit and sequenced on an Illumina NextSeq 2000 with P1 or P2 100 cycle kits as 75 bp single-end reads (SE 75/0/6/0) to ~10 M raw read depth per library. We have good results sequencing pooled library at 850 pM (%Loading Concentration > 95). Submission to the ENCODE portal requires >5 M aligned reads, >300 microRNAs detected at >2 CPM, and a Spearman replicate correlation >0.85.
 
 <img src="https://github.com/erebboah/mirna_pipeline/blob/master/mirna_overview.png" width="602" height="502">
 
