@@ -44,7 +44,7 @@ gunzip undetermined.fastq.gz
 
 4. Edit [demux_mirna.sh](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/demux_mirna.sh) so that you are using your HPC account (change `#SBATCH -A SEYEDAM_LAB`) and your conda environment (change `source ~/miniconda3/bin/activate seqtkpython3`). As inputs, you need fastq named `undetermined.fastq` in the fastq directory of this repo (e.g. `/pub/erebboah/mirna_pipeline/fastq/`) and your [samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv) in the scripts directory (e.g. `/pub/erebboah/mirna_pipeline/scripts/`). 
 
-5. Run demultiplexing bash script: `sbatch demux_mirna.sh`. Output is demultiplexed, gzipped fastqs with sample IDs in samplesheet.csv, in the fastq directory along with undetermined.fastq.gz.
+5. Run demultiplexing bash script: `sbatch demux_mirna.sh`. Output is demultiplexed, gzipped fastqs with sample IDs in samplesheet.csv, in the fastq directory along with undetermined.fastq.gz. If the demultiplexed reads look ok, then I delete undetermined.fastq.gz. (We do have backups on our server and can always retrieve the raw data.)
 
 ## Quantification
 ### Make STAR reference - only have to do once
