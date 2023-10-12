@@ -75,7 +75,7 @@ Inputs should have been generated in previous steps. You need:
   
 Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`). Feel free to remove the sample directories to save space if you only need the final counts.
 
-## Downstream analysis
+## Analysis
 1. Concatenate counts per sample into a counts matrix. Example code in R and python from our practice run.
 2. Convert counts to CPM (counts per million) to normalize for library depth: R and python
 3. PCA to identify outliers: R and python
