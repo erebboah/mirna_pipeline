@@ -89,26 +89,26 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
 1. Concatenate counts per sample into a counts matrix. Example code in [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.py) using data from our practice run.
 2. Convert counts to CPM (counts per million) to normalize for library depth: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/convert_counts_to_cpm.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/convert_counts_to_cpm.py)
 3. Principal component analysis: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_pca.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_pca.py)
-4. Differential microRNA expression analysis between conditions using pyDeseq2: [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/run_pydeseq2.py). Takes in command-line prompts. For this practice run we have timepoint, sex, and technician metadata. I recommend performing differential expression analysis between conditions within a single group for simplicity in interpretation of the results. This script takes in command-line arguments for sex, timepoint, technician, group to test, and output file name. For example, in our practice run, QC and PCA shows the RM samples to be QC outliers for whatever reason. It also shows the main difference between the samples to be timepoint rather sex. So to test between PND_14 and 2 month timepoints within A) female and B) male:
+4. Differential microRNA expression analysis between conditions using pyDeseq2: [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/run_pydeseq2.py). Takes in command-line prompts. For this practice run we have timepoint, sex, and technician metadata. I recommend performing differential expression analysis between conditions within a single group for simplicity in interpretation of the results. This script takes in command-line arguments for sex, timepoint, technician, group to test, and output file name. For example, in our practice run, QC and PCA shows the RM samples to be QC outliers for whatever reason. Here are some examples of how to run `run_pydeseq2.py`:
    
-   A)
+   A ) Differential gene expression between PND 14 and 2 month timepoints within females:
    ```
    python3 run_pydeseq2.py --sex Female --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_female`
    ```
    
-   B)
+   B) Differential gene expression between PND 14 and 2 month timepoints within males:
    ```
    `python3 run_pydeseq2.py --sex Male --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_male`
    ```
 
    To test between sex within C) PND_14 and D) PNM_02:
    
-   C)
+   C) Differential gene expression between females and males within PND 14 timepoint:
    ```
    `python3 run_pydeseq2.py --sex Female Male --timepoint PND_14 --technician SB NM --group sex --output ../degs/female_vs_male_pnd14`
    ```
    
-   D)
+   D) Differential gene expression between females and males within 2 month timepoint:
    ```
    `python3 run_pydeseq2.py --sex Female Male --timepoint PNM_02 --technician SB NM --group sex --output ../degs/female_vs_male_pnm02`
    ```
