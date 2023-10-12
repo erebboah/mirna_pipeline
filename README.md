@@ -19,8 +19,8 @@ Libraries are quantified using Qubit dsDNA HS Assay Kit and sequenced on an Illu
 Nothing! Can module load STAR and cutadapt on HPC.
 
 #### Analysis
-- R with `tidyverse`, `rtracklayer`
-- python with `pandas`
+- R with `tidyverse`, `rtracklayer` (to grab gene names from miRNA GTF)
+- python with `pandas`, `seaborn`, `matplotlib`, `sklearn`
 
 ## Demultiplexing
 
@@ -87,8 +87,8 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
 
 ## Analysis
 1. Concatenate counts per sample into a counts matrix. Example code in [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.py) using data from our practice run.
-2. Convert counts to CPM (counts per million) to normalize for library depth: R and python
-3. Principal component analysis: R and python
+2. Convert counts to CPM (counts per million) to normalize for library depth: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/convert_counts_to_cpm.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/convert_counts_to_cpm.py)
+3. Principal component analysis: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_pca.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_pca.py)
 4. Differential microRNA expression analysis between conditions using pyDeseq2: python
 5. Heatmap and volcano plot of differentially expressed microRNAs: R and python
 
