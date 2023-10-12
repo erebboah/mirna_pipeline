@@ -19,7 +19,7 @@ Libraries are quantified using Qubit dsDNA HS Assay Kit and sequenced on an Illu
 Nothing! Can module load STAR and cutadapt on HPC.
 
 #### Analysis
-- R with `tidyverse`, `rtracklayer`, `ggrepel`, `ComplexHeatmap`, `optparse` (to grab gene names from miRNA GTF)
+- R with `tidyverse`, `rtracklayer`, `ggrepel`, `ComplexHeatmap`, (install using BiocManager i.e. BiocManager::install("ComplexHeatmap")), `optparse` (to grab gene names from miRNA GTF)
 - python with `pandas`, `seaborn`, `matplotlib`, `sklearn`, `argparse`, `pydeseq2`, `pyranges` (to grab gene names from miRNA GTF)
 
 ## Demultiplexing
