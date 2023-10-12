@@ -37,10 +37,6 @@ rm *.fastq.gz
 
 [Example](https://github.com/erebboah/mirna_pipeline/blob/master/ref/samplesheet.csv)
 
-| Syntax      | Description |
-| ----------- | ----------- |
-|        |         |
-| 1_11   | ENC4_BS91.fastq        |
 
 
 ## Quantification
