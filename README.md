@@ -39,7 +39,7 @@ gunzip undetermined.fastq.gz
 5. Run demultiplexing bash script: `sbatch demux_mirna.sh`. Output is demultiplexed fastqs named as in samplesheet.csv in the fastq directory.
 
 ## Quantification
-### Make STAR reference 
+### Make STAR reference - only have to do once
 1. Download microRNA GENCODE GTFs from ENCODE portal: [vM21 mouse](https://www.encodeproject.org/files/ENCFF094ICJ/) or [v29 human](https://www.encodeproject.org/files/ENCFF470CZH/).
 
 ```
