@@ -26,7 +26,7 @@ barcode_data = {
 }
 
 if len(sys.argv) != 3:
-    print("Usage: python three_prime_demux.py undetermined.fastq output_directory")
+    print("Usage: python three_prime_demux.py five_prime_trim.fastq output_directory")
     sys.exit(1)
 
 fastq_path = sys.argv[1]
@@ -72,8 +72,8 @@ for line in fastq:
         counter = 5
                 
     if counter == 5:
-        # Obtain first 6 base-pairs of read
-        seq6bp = seq[0:6]
+        # Obtain LAST 6 base-pairs of read
+        seq6bp = seq[-6:]
                 
         # Obtain number of matches for each barcode
         for barcode in barcodes:
