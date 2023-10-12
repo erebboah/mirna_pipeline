@@ -34,7 +34,7 @@ gunzip undetermined.fastq.gz
 
 3. Edit the "real" sample sheet. The first column is the 5' Adaptor ID (1-7) and forward primer index ID (1-12, 14, 15, 18, 21-25) separated by an underscore. The second column is your desired fastq name (sample ID). No header! Preferably matches some sample ID in your metadata. Should be in the same directory as the scripts. [Example of samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv)
 
-4. Edit [demux_mirna.sh](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/demux_mirna.sh) so that you are using your HPC account (change `#SBATCH -A SEYEDAM_LAB`) and your conda environment (change `source ~/miniconda3/bin/activate seqtkpython3`). As inputs, you need fastq named `undetermined.fastq` in the fastq directory of this repo (e.g. `/pub/erebboah/mirna_pipeline/fastq/`) and your [samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv) in the scripts directory (e.g. `/pub/erebboah/mirna_pipeline/scripts/`).
+4. Edit [demux_mirna.sh](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/demux_mirna.sh) so that you are using your HPC account (change `#SBATCH -A SEYEDAM_LAB`) and your conda environment (change `source ~/miniconda3/bin/activate seqtkpython3`). As inputs, you need fastq named `undetermined.fastq` in the fastq directory of this repo (e.g. `/pub/erebboah/mirna_pipeline/fastq/`) and your [samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv) in the scripts directory (e.g. `/pub/erebboah/mirna_pipeline/scripts/`). 
 
 5. Run demultiplexing bash script: `sbatch demux_mirna.sh`. Output is demultiplexed fastqs named as in samplesheet.csv in the fastq directory.
 
@@ -73,7 +73,7 @@ Inputs should have been generated in previous steps. You need:
    - STAR reference directory, e.g. `ref/mm10` or `ref/hg38`
    - samplesheet.csv in `scripts`
   
-Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`).
+Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`). Feel free to remove the sample directories to save space if you only need the final counts.
 
 ## Downstream analysis
 1. Concatenate counts per sample into a counts matrix. Example code in R and python from our practice run.
