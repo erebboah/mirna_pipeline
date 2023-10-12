@@ -32,7 +32,7 @@ Library structure deviates from standard Illumina, so samples must be demultiple
 scp /home/sharing/runs/231006_VH00582_82_AACYV55M5/Analysis/1/Data/fastq/*.fastq.gz erebboah@hpc3.rcic.uci.edu:/pub/erebboah/mirna_pipeline/fastq/run_1080
 ```
 
-2. Concatenate all reads to undetermined.fastq.gz and unzip, making sure you have enough space. Need 24G for a P1 100 cycle kit. 
+2. Concatenate all reads to undetermined.fastq.gz and unzip, making sure you have enough space. Need 24G for a P1 100 cycle kit x2 since you'll basically be copying it to demultiplex = 48 G. If you clean up all files at the end (undetermined.fastq.gz and all the individual sample output directories, just keeping the counts directory), you'll only need ~5G, mostly for the demultiplexed fastqs.
 
 ```
 cd /pub/erebboah/mirna_pipeline/fastq/
