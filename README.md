@@ -19,8 +19,8 @@ Libraries are quantified using Qubit dsDNA HS Assay Kit and sequenced on an Illu
 Nothing! Can module load STAR and cutadapt on HPC.
 
 #### Analysis
-- R with ...
-- python with ...
+- R with `tidyverse`, `rtracklayer`
+- python with `pandas`
 
 ## Demultiplexing
 
@@ -86,7 +86,7 @@ Each sample will get its own output directory, named the same as the sample ID, 
 Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/star/Log.final.out`) and signal files to display on the UCSC genome browser (e.g. `ENC4_453_SB/star/Signal.UniqueMultiple.str1.out.wig`). The percent uniquely mapped reads is low because the microRNAs are so short. On average I get ~43% multi-mapped reads, and pass ENCODE standards. For microRNA-seq, the number of multi-mapped reads plus unique reads are the total number of aligned reads (should be > 5M). Feel free to poke around my old [ENCODE miRNA-seq spreadsheet](https://docs.google.com/spreadsheets/d/1qcve4QnxcMVTgyIxT3ouhblCO1y5pmKZ2B9L-TCnbBg/edit#gid=898072680) for other QC stuff.
 
 ## Analysis
-1. Concatenate counts per sample into a counts matrix. Example code in R and python using data from our practice run.
+1. Concatenate counts per sample into a counts matrix. Example code in [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.py) using data from our practice run.
 2. Convert counts to CPM (counts per million) to normalize for library depth: R and python
 3. Principal component analysis: R and python
 4. Differential microRNA expression analysis between conditions using pyDeseq2: python
