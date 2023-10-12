@@ -10,6 +10,10 @@ Resulting microRNA-seq libraries are quantified using Qubit dsDNA HS Assay Kit (
 
 <img src="https://github.com/erebboah/mirna_pipeline/blob/master/mirna_overview.png" width="602" height="502">
 
+## Environment requirements
+Run the demultiplexing code in an environment with
+- seqtk
+- python, with `os` and `sys` libraries installed 
 
 ## Demultiplexing
 Library structure deviates from standard Illumina, so samples must be demultiplexed with custom code. Illumina NextSeq2000 SampleSheet (e.g. for our [practice run](https://github.com/erebboah/mirna_pipeline/blob/master/ref/SampleSheet_1080.csv)) needs to specify read setup but the SampleID / Index doesn't matter since we're just going to use the "undetermined" reads.
