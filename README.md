@@ -95,10 +95,11 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
    
    B) `python3 run_pydeseq2.py --sex Male --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_male`
 
-   To test between sex within A) PND_14 and B) PNM_02:
-   A)`python3 run_pydeseq2.py --sex Female Male --timepoint PND_14 --technician SB NM --group sex --output ../degs/female_vs_male_pnd14`
+   To test between sex within C) PND_14 and D) PNM_02:
    
-   B) `python3 run_pydeseq2.py --sex Female Male --timepoint PNM_02 --technician SB NM --group sex --output ../degs/female_vs_male_pnm02`
+   C)`python3 run_pydeseq2.py --sex Female Male --timepoint PND_14 --technician SB NM --group sex --output ../degs/female_vs_male_pnd14`
+   
+   D) `python3 run_pydeseq2.py --sex Female Male --timepoint PNM_02 --technician SB NM --group sex --output ../degs/female_vs_male_pnm02`
 
    Inputs to `run_pydeseq2.py` must exactly match your [metadata](https://github.com/erebboah/mirna_pipeline/blob/master/ref/mirna_practice_metadata.csv).
 
