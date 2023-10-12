@@ -115,7 +115,7 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
 
 6. Heatmap and volcano plot of differentially expressed microRNAs: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/deg_plotting.R) Here are some examples of how to run `deg_plotting.R`:
    
-   A ) PND 14 vs. 2 month timepoints within females, |log2FC| > 1 and padj < 0.01, removing 4 RM outliers:
+   A ) PND 14 vs. 2 month timepoints within females (using file output from `run_pydeseq2.py`), |log2FC| > 1 and padj < 0.01, removing 4 RM outliers:
    ```
    Rscript deg_plotting.R --fname ../degs/pnd14_vs_pnm02_female.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
    ```
