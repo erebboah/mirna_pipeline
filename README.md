@@ -32,7 +32,7 @@ cat *.fastq.gz > undetermined.fastq.gz
 gunzip undetermined.fastq.gz
 ```
 
-3. Edit the "real" sample sheet. The first column is the 5' Adaptor ID (1-7) and forward primer index ID (1-12, 14, 15, 18, 21-25) separated by an underscore. The second column is your desired fastq name (sample ID). No header! Preferably matches some sample ID in your metadata. Should be in the same folder as the scripts.
+3. Edit the "real" sample sheet. The first column is the 5' Adaptor ID (1-7) and forward primer index ID (1-12, 14, 15, 18, 21-25) separated by an underscore. The second column is your desired fastq name (sample ID). No header! Preferably matches some sample ID in your metadata. Should be in the same directory as the scripts.
 
 [Example of samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv)
 
@@ -64,11 +64,11 @@ gunzip GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz
 3. Once you have the reference files, run STAR in genomeGenerate mode: `sbatch make_ref.sh`
 
 ### Trim and map reads
-1. Run cutadapt to trim adapters and STAR to map. Specify genome, e.g. for human: `sbatch trim_map.sh GRCh38`. For mouse: `sbatch trim_map.sh mm10`. Inputs should have been generated in previous steps. You need:
+Run cutadapt to trim adapters and STAR to map. Specify genome, e.g. for human: `sbatch trim_map.sh GRCh38`. For mouse: `sbatch trim_map.sh mm10`. Inputs should have been generated in previous steps. You need:
    - Demultiplexed and gzipped fastqs in `fastq`
-   - STAR reference folder, e.g. `ref/mm10` or `ref/hg38`
+   - STAR reference directory, e.g. `ref/mm10` or `ref/hg38`
    - samplesheet.csv in `scripts`
   
-2. Each sample will get its own output directory, named the same as the sample ID. Within sample output, there's `cutadapt` and `star` directories containing intermediate files. The actual microRNA quantifications are in `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts`).
+Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual microRNA quantifications are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts`).
 
 ## Downstream analysis
