@@ -19,7 +19,7 @@ Libraries are quantified using Qubit dsDNA HS Assay Kit and sequenced on an Illu
 Nothing! Can module load STAR and cutadapt on HPC.
 
 #### Analysis
-- R with `tidyverse`, `rtracklayer` (to grab gene names from miRNA GTF)
+- R with `tidyverse`, `rtracklayer`, `ggrepel`, `ComplexHeatmap`, `optparse` (to grab gene names from miRNA GTF)
 - python with `pandas`, `seaborn`, `matplotlib`, `sklearn`, `argparse`, `pydeseq2`, `pyranges` (to grab gene names from miRNA GTF)
 
 ## Demultiplexing
@@ -113,7 +113,7 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
 
    Inputs to `run_pydeseq2.py` must exactly match your [metadata](https://github.com/erebboah/mirna_pipeline/blob/master/ref/mirna_practice_metadata.csv).
 
-6. Heatmap and volcano plot of differentially expressed microRNAs: R and python
+6. Heatmap and volcano plot of differentially expressed microRNAs: [R]()
 
 ## Summary
 1. `sbatch demux_mirna.sh`
