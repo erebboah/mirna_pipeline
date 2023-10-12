@@ -65,6 +65,7 @@ gunzip GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz
 Run cutadapt to trim adapters and STAR to map. Specify human or mouse in sbatch call. 
 
 Human: `sbatch trim_map.sh GRCh38`
+
 Mouse: `sbatch trim_map.sh mm10`
 
 Inputs should have been generated in previous steps. You need:
