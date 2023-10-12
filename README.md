@@ -113,7 +113,27 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
 
    Inputs to `run_pydeseq2.py` must exactly match your [metadata](https://github.com/erebboah/mirna_pipeline/blob/master/ref/mirna_practice_metadata.csv).
 
-6. Heatmap and volcano plot of differentially expressed microRNAs: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/deg_plotting.R)
+6. Heatmap and volcano plot of differentially expressed microRNAs: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/deg_plotting.R) Here are some examples of how to run `deg_plotting.R`:
+   
+   A ) PND 14 vs. 2 month timepoints within females, |log2FC| > 1 and padj < 0.01, removing 4 RM outliers:
+   ```
+   Rscript deg_plotting.R --fname ../degs/pnd14_vs_pnm02_female.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
+   ```
+   
+   B) PND 14 vs. 2 month timepoints within males:
+   ```
+   Rscript deg_plotting.R --fname ../degs/pnd14_vs_pnm02_male.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
+   ```
+   
+   C) Females vs. males within PND 14 timepoint:
+   ```
+   Rscript deg_plotting.R --fname ../degs/pnd14_vs_pnm02_male.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
+   ```
+   
+   D) Females vs. males within 2 month timepoint:
+   ```
+   python3 run_pydeseq2.py --sex Female Male --timepoint PNM_02 --technician SB NM --group sex --output ../degs/female_vs_male_pnm02
+   ```
 
 ## Summary
 1. `sbatch demux_mirna.sh`
