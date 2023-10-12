@@ -72,3 +72,13 @@ Run cutadapt to trim adapters and STAR to map. Specify genome, e.g. for human: `
 Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`).
 
 ## Downstream analysis
+1. Concatenate counts per sample into a counts matrix. Example code in R and python from our practice run.
+2. Convert counts to CPM (counts per million) to normalize for library depth: R and python
+3. PCA to identify outliers: R and python
+4. Differential microRNA expression analysis between conditions using pyDeseq2: python
+
+## Summary
+1. `sbatch demux_mirna.sh`
+2. `sbatch make_ref.sh` (only need to run once to generate references!)
+3. `sbatch trim_map.sh GRCh38` (e.g. for human samples)
+4. Downstream analysis in R and/or python.
