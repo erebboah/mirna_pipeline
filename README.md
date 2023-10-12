@@ -86,4 +86,4 @@ Each sample will get its own output directory, named the same as the sample ID, 
 1. `sbatch demux_mirna.sh`
 2. `sbatch make_ref.sh` (only need to run once to generate references!)
 3. `sbatch trim_map.sh GRCh38` (e.g. for human samples)
-4. Downstream analysis in R and/or python.
+4. Analysis in R and/or python.
