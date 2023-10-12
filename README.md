@@ -45,8 +45,9 @@ gunzip undetermined.fastq.gz
 ```
 wget https://www.encodeproject.org/files/ENCFF094ICJ/@@download/ENCFF094ICJ.gtf.gz
 wget https://www.encodeproject.org/files/ENCFF470CZH/@@download/ENCFF470CZH.gtf.gz
-mv ENCFF094ICJ.gtf.gz mm10_mirna.gtf
-mv ENCFF470CZH.gtf.gz hg38_mirna.gtf
+mv ENCFF094ICJ.gtf.gz mm10_mirna.gtf.gz
+mv ENCFF470CZH.gtf.gz hg38_mirna.gtf.gz
+gunzip *.gtf.gz
 ```
 
 2. Download reference sequences from the portal: [mm10 mouse](https://www.encodeproject.org/files/mm10_no_alt_analysis_set_ENCODE/) or [hg38 human](https://www.encodeproject.org/files/GRCh38_no_alt_analysis_set_GCA_000001405.15/).
@@ -55,8 +56,7 @@ mv ENCFF470CZH.gtf.gz hg38_mirna.gtf
 wget https://www.encodeproject.org/files/mm10_no_alt_analysis_set_ENCODE/@@download/mm10_no_alt_analysis_set_ENCODE.fasta.gz
 wget https://www.encodeproject.org/files/GRCh38_no_alt_analysis_set_GCA_000001405.15/@@download/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz
 
-gunzip mm10_no_alt_analysis_set_ENCODE.fasta.gz
-gunzip GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz
+gunzip *.fasta.gz
 ```
 
 3. Once you have the reference files, run STAR in genomeGenerate mode: `sbatch make_ref.sh`
