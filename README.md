@@ -81,7 +81,7 @@ Inputs should have been generated in previous steps. You need:
    - STAR reference directory, e.g. `ref/mm10` or `ref/hg38`
    - samplesheet.csv in `scripts`
   
-Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`). Feel free to remove the sample directories to save space if you only need the final counts. Other than counts, some files you may want to keep are /path/to/STAR/map/report and /path/to/wiggle.
+Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`). Feel free to remove the sample directories to save space if you only need the final counts. Other than counts, some files you or may not be interested in are the STAR report (e.g. `ENC4_453_SB/star/Log.final.out`) and signal files to display on the UCSC genome browser (e.g. `ENC4_453_SB/star/Signal.UniqueMultiple.str1.out.wig`).
 
 ## Analysis
 1. Concatenate counts per sample into a counts matrix. Example code in R and python from our practice run.
