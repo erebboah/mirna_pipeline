@@ -69,6 +69,6 @@ Run cutadapt to trim adapters and STAR to map. Specify genome, e.g. for human: `
    - STAR reference directory, e.g. `ref/mm10` or `ref/hg38`
    - samplesheet.csv in `scripts`
   
-Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual microRNA quantifications are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts`).
+Each sample will get its own output directory, named the same as the sample ID, e.g. `ENC4_453_NM`. Within the sample directory, there's `cutadapt` and `star` directories containing intermediate files. The actual tab-separated microRNA quantifications per sample are in the main counts directory `counts` (e.g. `/pub/erebboah/mirna_pipeline/counts/ENC4_453_NM.tsv`).
 
 ## Downstream analysis
