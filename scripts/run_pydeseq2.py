@@ -25,7 +25,6 @@ def run_deseq2(counts, meta, group, filtering):
 # Function to merge results with gene names
 def merge_results_with_gene_names(results, mirna_gtf):
     results = pd.merge(results, mirna_gtf, on="gene_id", how="left")
-    results.fillna("NA", inplace=True)
     return results
 
 # Function to save results to CSV
@@ -35,18 +34,18 @@ def save_results_to_csv(results, output_file):
 def main():
     # Set up argument parser
     parser = argparse.ArgumentParser(description='Run DESeq2 analysis and save results to CSV.')
-    parser.add_argument('--sex', required=True, choices=['Male', 'Female'], help='Sex filter')
-    parser.add_argument('--technician', required=True, help='Comma-separated list of timepoints to include')
-    parser.add_argument('--timepoint', required=True, help='Comma-separated list of technicians to include')
+    parser.add_argument('--sex', nargs='+', required=True, help='List of sexes to include')
+    parser.add_argument('--technician', nargs='+', required=True, help='List of technicians to include')
+    parser.add_argument('--timepoint', nargs='+', required=True, help='List of timepoints to include')
     parser.add_argument('--group', required=True, choices=['timepoint', 'sex'], help='Group to test')
     parser.add_argument('--output', required=True, help='Output file name')
     
     args = parser.parse_args()
 
     # Set up filtering dictionary
-    filtering = {'sex': [args.sex],
-                 'timepoint': args.timepoint.split(','),
-                 'technician': args.technician.split(',')}  # Split comma-separated list into a list
+    filtering = {'sex': args.sex,
+                 'timepoint': args.timepoint,
+                 'technician': args.technician}
     
     print(filtering)
 

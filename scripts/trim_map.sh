@@ -1,15 +1,15 @@
 #!/bin/bash
-#SBATCH --job-name=mirna    ## Name of the job
+#SBATCH --job-name=map    ## Name of the job
 #SBATCH -A SEYEDAM_LAB            ## account to charge 
 #SBATCH -p standard               ## partition/queue name
 #SBATCH --nodes=1                 ## (-N) number of nodes to use
 #SBATCH --array=1-12              ## number of tasks to launch (number of samples)
-#SBATCH --cpus-per-task=8         ## number of cores the job needs
-#SBATCH --output=mirna-%J.out ## output log file
-#SBATCH --error=mirna-%J.err ## error log file
+#SBATCH --cpus-per-task=16         ## number of cores the job needs
+#SBATCH --output=map-%J.out ## output log file
+#SBATCH --error=map-%J.err ## error log file
 
 inpath="/pub/erebboah/mirna_pipeline/"
-genome=$1 # either GRCh38 or mm10
+genome=$1 # either hg38 or mm10
 
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 1 ]; then
@@ -73,6 +73,6 @@ STAR \
 	--outWigNorm RPM \
 	--outFileNamePrefix ${inpath}${prefix}/star/
 
-mv ${inpath}${prefix}/star/ReadsPerGene.out.tab ${inpath}$/counts/${prefix}.tsv
+mv ${inpath}${prefix}/star/ReadsPerGene.out.tab ${inpath}/counts/${prefix}.tsv
 
 
