@@ -33,7 +33,8 @@ gunzip undetermined.fastq.gz
 rm *.fastq.gz
 ```
 
-3. 
+3. Edit the "real" samplesheet.csv. First column is the 5' Adaptor and forward primer separated by an underscore. Second column is your desired fastq name (sample ID). Preferably matches some sample ID in your metadata.
+
 
 ## Quantification
 
