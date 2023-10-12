@@ -70,7 +70,7 @@ gunzip *.fasta.gz
 3. Once you have the reference files, run STAR in genomeGenerate mode: `sbatch make_ref.sh`
 
 ### Trim and map reads
-Run cutadapt to trim adapters and STAR to map. Specify human or mouse in sbatch call. 
+Run cutadapt to trim adapters and STAR to map. Specify human or mouse in sbatch statement. 
 
 Inputs:
    - Demultiplexed and gzipped fastqs in `fastq`
