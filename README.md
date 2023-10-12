@@ -138,5 +138,5 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
 ## Summary
 1. `sbatch demux_mirna.sh`
 2. `sbatch make_ref.sh` (only need to run once to generate references!)
-3. `sbatch trim_map.sh GRCh38` (e.g. for human samples)
+3. `sbatch trim_map.sh mm10` (e.g. for mouse samples)
 4. Analysis in R and/or python.
