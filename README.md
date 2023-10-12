@@ -77,7 +77,7 @@ Inputs:
    - STAR reference directory, e.g. `ref/mm10` or `ref/hg38`
    - samplesheet.csv in `scripts` to indicate the samples you want to map
 
-Human: `sbatch trim_map.sh GRCh38`
+Human: `sbatch trim_map.sh hg38`
 
 Mouse: `sbatch trim_map.sh mm10`
   
