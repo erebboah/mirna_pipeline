@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 
-meta = pd.read_csv("../ref/mirna_practice_metadata.csv")
+meta = pd.read_csv("../ref/mirna_metadata.csv")
 
 cpm_2 = pd.read_csv("../counts/cpm_over2_matrix.tsv", sep="\t", index_col=0)
 

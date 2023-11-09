@@ -50,7 +50,7 @@ def main():
     print(filtering)
 
     # Read metadata and counts
-    meta = pd.read_csv("../ref/mirna_practice_metadata.csv")
+    meta = pd.read_csv("../ref/mirna_metadata.csv")
     counts = pd.read_csv("../counts/counts_matrix.tsv", sep="\t", index_col=0)
     
     counts = counts[counts.sum(axis=1) > 0] # remove non-expressed microRNAs

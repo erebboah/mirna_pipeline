@@ -1,6 +1,6 @@
 library(tidyverse)
 
-meta = read.csv("../ref/mirna_practice_metadata.csv")
+meta = read.csv("../ref/mirna_metadata.csv")
 
 cpm_2 = read.table("../counts/cpm_over2_matrix.tsv",sep="\t",header=TRUE, row.names=1)
 
