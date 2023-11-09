@@ -1,6 +1,6 @@
 import pandas as pd
 
-meta = pd.read_csv("../ref/mirna_practice_metadata.csv")
+meta = pd.read_csv("../ref/mirna_metadata.csv")
 path = "../counts/"
 samples = meta["sampleID"]
 

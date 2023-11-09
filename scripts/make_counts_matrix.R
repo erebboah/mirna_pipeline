@@ -1,4 +1,4 @@
-meta = read.csv("../ref/mirna_practice_metadata.csv")
+meta = read.csv("../ref/mirna_metadata.csv")
 path = "../counts/"
 samples = meta$sampleID
 
