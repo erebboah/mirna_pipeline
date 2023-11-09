@@ -31,12 +31,9 @@ pca_df = merge(pca_df, meta, by = "sampleID")
 
 x_axis_labels = sprintf("PC%d (%.1f%%)", seq_len(ncol(cpm_2)), 100 * pct_explained_df$pct_variance)
 
-color_palette = c('PND_14' = '#ec80eb', 'PNM_02' = '#800080')
-
 # Scatter plot
-scatter_plot = ggplot(pca_df, aes(x = PC1, y = PC2, color = timepoint, shape = technician)) +
+scatter_plot = ggplot(pca_df, aes(x = PC1, y = PC2, color = stage, shape = genotype)) +
   geom_point(size = 3)+
-  scale_color_manual(values = color_palette) +
   labs(x = x_axis_labels[1], y = x_axis_labels[2]) +
   theme_minimal() 
 

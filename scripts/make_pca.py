@@ -46,16 +46,12 @@ pca_df.set_index(input_df.index, inplace=True)
 # Perform a merge based on matching indices
 pca_df = pca_df.merge(meta, left_index=True, right_on='sampleID')
 
-# Make a color palette dictionary
-c_dict = {'PND_14': '#ec80eb', 
-          'PNM_02': '#800080' }
-
 # Set the figure size in inches
 plt.figure(figsize=(5, 4))
 
 ax = sns.scatterplot(data=pca_df, x=cols[0], y=cols[1], 
                      s=150, # size of point
-                     hue='timepoint', palette=c_dict, style='technician')
+                     hue='stage', style='genotype')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize='medium')
 
 # Save the plot 
