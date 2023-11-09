@@ -55,7 +55,7 @@ volcano = ggplot(result, aes(x=log2FoldChange, y=-log10(padj), col=diffexpressed
 ggsave(paste0("../plots/",new_fname,"_volcano.png"), plot = volcano, width = 8, height = 8, dpi = 300)
 
 # Assuming 'meta' is your metadata dataframe
-meta = read.csv("../ref/mirna_practice_metadata.csv")
+meta = read.csv("../ref/mirna_metadata.csv")
 meta = meta[!(meta$sampleID %in% outliers),]
 meta$sex <- factor(meta$sex)
 meta$timepoint <- factor(meta$timepoint)
