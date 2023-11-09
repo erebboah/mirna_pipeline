@@ -34,18 +34,16 @@ def save_results_to_csv(results, output_file):
 def main():
     # Set up argument parser
     parser = argparse.ArgumentParser(description='Run DESeq2 analysis and save results to CSV.')
-    parser.add_argument('--sex', nargs='+', required=True, help='List of sexes to include')
-    parser.add_argument('--technician', nargs='+', required=True, help='List of technicians to include')
-    parser.add_argument('--timepoint', nargs='+', required=True, help='List of timepoints to include')
-    parser.add_argument('--group', required=True, choices=['timepoint', 'sex'], help='Group to test')
+    parser.add_argument('--genotype', nargs='+', required=True, help='List of genotypes to include')
+    parser.add_argument('--stage', nargs='+', required=True, help='List of stages to include')
+    parser.add_argument('--group', required=True, help='Group to test')
     parser.add_argument('--output', required=True, help='Output file name')
     
     args = parser.parse_args()
 
     # Set up filtering dictionary
-    filtering = {'sex': args.sex,
-                 'timepoint': args.timepoint,
-                 'technician': args.technician}
+    filtering = {'genotype': args.genotype,
+                 'stage': args.stage}
     
     print(filtering)
 
