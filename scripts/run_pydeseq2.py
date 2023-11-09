@@ -68,7 +68,7 @@ def main():
     results = run_deseq2(counts_selected, meta_selected, args.group, filtering)
 
     # Read GTF file into PyRanges
-    mirna_gtf = pr.read_gtf('../ref/mm10_mirna.gtf', as_df=True)
+    mirna_gtf = pr.read_gtf('../ref/hg38_mirna.gtf', as_df=True)
 
     # Extract gene_id and gene_name columns
     mirna_gtf = mirna_gtf[['gene_id', 'gene_name']].drop_duplicates()
