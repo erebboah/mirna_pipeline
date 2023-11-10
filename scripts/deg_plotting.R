@@ -62,14 +62,12 @@ meta$timepoint <- factor(meta$timepoint)
 meta$technician <- factor(meta$technician)
 
 # Create heatmap annotations
-sex_palette = c("Male" = "blue", "Female" = "pink")
-tp_palette = c('PND_14' = '#ec80eb', 'PNM_02' = '#800080')
-tech_palette = c('NM' = '#72c2a8', 'SB' = '#ecaa2e', 'RM' = '#de731c')
+geno_palette = c('B0' = '#ec80eb', 'B2' = '#de731c')
+stage_palette = c('Myoblast' = '#72c2a8', 'Myotube' = '#ecaa2e')
 
-column_ha = HeatmapAnnotation(sex = setNames(meta$sex, meta$sex), 
-                               timepoint = setNames(meta$timepoint, meta$timepoint),
-                               technician = setNames(meta$technician, meta$technician),
-                               col = list(sex = sex_palette,timepoint = tp_palette, technician = tech_palette))
+column_ha = HeatmapAnnotation(genotype = setNames(meta$genotype, meta$genotype),
+                               stage = setNames(meta$stage, meta$stage),
+                               col = list(genotype = geno_palette,stage = stage_palette))
 
 # Get scaled CPM matrix to plot, filtered by DEGs
 cpm_2 = read.table("../counts/cpm_over2_matrix.tsv",sep="\t",header=TRUE, row.names=1)
