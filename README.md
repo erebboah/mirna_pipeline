@@ -98,20 +98,11 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
    python3 run_pydeseq2.py --sex Female --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_female
    ```
    
-   B) PND 14 vs. 2 month timepoints within males:
-   ```
-   python3 run_pydeseq2.py --sex Male --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_male
-   ```
-   
-   C) Females vs. males within PND 14 timepoint:
+   B) Females vs. males within PND 14 timepoint:
    ```
    python3 run_pydeseq2.py --sex Female Male --timepoint PND_14 --technician SB NM --group sex --output ../degs/female_vs_male_pnd14
    ```
    
-   D) Females vs. males within 2 month timepoint:
-   ```
-   python3 run_pydeseq2.py --sex Female Male --timepoint PNM_02 --technician SB NM --group sex --output ../degs/female_vs_male_pnm02
-   ```
 
    Inputs to `run_pydeseq2.py` must exactly match your [metadata](https://github.com/erebboah/mirna_pipeline/blob/master/ref/mirna_practice_metadata.csv).
 
@@ -122,20 +113,11 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
    Rscript deg_plotting.R --fname ../degs/pnd14_vs_pnm02_female.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
    ```
    
-   B) PND 14 vs. 2 month timepoints within males:
-   ```
-   Rscript deg_plotting.R --fname ../degs/pnd14_vs_pnm02_male.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
-   ```
-   
-   C) Females vs. males within PND 14 timepoint:
+   B) Females vs. males within PND 14 timepoint:
    ```
    Rscript deg_plotting.R --fname ../degs/female_vs_male_pnd14.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
    ```
-   
-   D) Females vs. males within 2 month timepoint:
-   ```
-   Rscript deg_plotting.R --fname ../degs/female_vs_male_pnm02.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
-   ```
+
 
 ## Summary
 1. `sbatch demux_mirna.sh`
