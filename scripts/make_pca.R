@@ -28,7 +28,6 @@ pca_df$sampleID = colnames(cpm_2)
 
 # Merge with metadata
 pca_df = merge(pca_df, meta, by = "sampleID")
-
 x_axis_labels = sprintf("PC%d (%.1f%%)", seq_len(ncol(cpm_2)), 100 * pct_explained_df$pct_variance)
 
 # Scatter plot

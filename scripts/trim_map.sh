@@ -3,7 +3,7 @@
 #SBATCH -A SEYEDAM_LAB            ## account to charge 
 #SBATCH -p standard               ## partition/queue name
 #SBATCH --nodes=1                 ## (-N) number of nodes to use
-#SBATCH --array=1-12              ## number of tasks to launch (number of samples)
+#SBATCH --array=1-7              ## number of tasks to launch (number of samples)
 #SBATCH --cpus-per-task=16         ## number of cores the job needs
 #SBATCH --output=map-%J.out ## output log file
 #SBATCH --error=map-%J.err ## error log file
