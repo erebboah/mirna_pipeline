@@ -86,6 +86,8 @@ Each sample will get its own output directory, named the same as the sample ID, 
 Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/star/Log.final.out`) and signal files to display on the UCSC genome browser (e.g. `ENC4_453_SB/star/Signal.UniqueMultiple.str1.out.wig`). The percent uniquely mapped reads is low because the microRNAs are so short. On average I get ~43% multi-mapped reads, and pass ENCODE standards. For microRNA-seq, the number of multi-mapped reads plus unique reads are the total number of aligned reads (should be > 5M). Feel free to poke around my old [ENCODE miRNA-seq spreadsheet](https://docs.google.com/spreadsheets/d/1qcve4QnxcMVTgyIxT3ouhblCO1y5pmKZ2B9L-TCnbBg/edit#gid=898072680) for other QC stuff.
 
 ## Analysis
+<img src="https://github.com/erebboah/mirna_pipeline/blob/master/mirna_analysis_workflow.png" width="551" height="74">
+
 1. Concatenate counts per sample into a counts matrix. Example code in [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.py) using data from our practice run.
 2. Convert counts to CPM (counts per million) to normalize for library depth: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/convert_counts_to_cpm.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/convert_counts_to_cpm.py)
 3. Principal component analysis: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_pca.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_pca.py)
