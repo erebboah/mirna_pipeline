@@ -86,6 +86,8 @@ Each sample will get its own output directory, named the same as the sample ID, 
 Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/star/Log.final.out`) and signal files to display on the UCSC genome browser (e.g. `ENC4_453_SB/star/Signal.UniqueMultiple.str1.out.wig`). The percent uniquely mapped reads is low because the microRNAs are so short. On average I get ~43% multi-mapped reads, and pass ENCODE standards. For microRNA-seq, the number of multi-mapped reads plus unique reads are the total number of aligned reads (should be > 5M). Feel free to poke around my old [ENCODE miRNA-seq spreadsheet](https://docs.google.com/spreadsheets/d/1qcve4QnxcMVTgyIxT3ouhblCO1y5pmKZ2B9L-TCnbBg/edit#gid=898072680) for other QC stuff.
 
 ## Analysis
+<img src="https://github.com/erebboah/mirna_pipeline/blob/master/mirna_analysis_workflow.png" width="551" height="74">
+
 1. Concatenate counts per sample into a counts matrix. Example code in [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_counts_matrix.py) using data from our practice run.
 2. Convert counts to CPM (counts per million) to normalize for library depth: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/convert_counts_to_cpm.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/convert_counts_to_cpm.py)
 3. Principal component analysis: [R](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_pca.R) and [python](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/make_pca.py)
@@ -96,20 +98,11 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
    python3 run_pydeseq2.py --sex Female --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_female
    ```
    
-   B) PND 14 vs. 2 month timepoints within males:
-   ```
-   python3 run_pydeseq2.py --sex Male --timepoint PND_14 PNM_02 --technician SB NM --group timepoint --output ../degs/pnd14_vs_pnm02_male
-   ```
-   
-   C) Females vs. males within PND 14 timepoint:
+   B) Females vs. males within PND 14 timepoint:
    ```
    python3 run_pydeseq2.py --sex Female Male --timepoint PND_14 --technician SB NM --group sex --output ../degs/female_vs_male_pnd14
    ```
    
-   D) Females vs. males within 2 month timepoint:
-   ```
-   python3 run_pydeseq2.py --sex Female Male --timepoint PNM_02 --technician SB NM --group sex --output ../degs/female_vs_male_pnm02
-   ```
 
    Inputs to `run_pydeseq2.py` must exactly match your [metadata](https://github.com/erebboah/mirna_pipeline/blob/master/ref/mirna_practice_metadata.csv).
 
@@ -120,20 +113,11 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
    Rscript deg_plotting.R --fname ../degs/pnd14_vs_pnm02_female.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
    ```
    
-   B) PND 14 vs. 2 month timepoints within males:
-   ```
-   Rscript deg_plotting.R --fname ../degs/pnd14_vs_pnm02_male.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
-   ```
-   
-   C) Females vs. males within PND 14 timepoint:
+   B) Females vs. males within PND 14 timepoint:
    ```
    Rscript deg_plotting.R --fname ../degs/female_vs_male_pnd14.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
    ```
-   
-   D) Females vs. males within 2 month timepoint:
-   ```
-   Rscript deg_plotting.R --fname ../degs/female_vs_male_pnm02.csv --l2fc 1 --padj 0.01 --outliers "ENC4_453_RM ENC4_455_RM ENC4_465_RM ENC4_467_RM"
-   ```
+
 
 ## Summary
 1. `sbatch demux_mirna.sh`
