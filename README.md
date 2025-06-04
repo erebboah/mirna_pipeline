@@ -12,15 +12,14 @@ Libraries are quantified using Qubit dsDNA HS Assay Kit and sequenced on an Illu
 
 ## Environment requirements
 #### Demultiplexing
-- seqtk (`conda install -c bioconda seqtk`)
-- python, with `os` and `sys` libraries installed
+- python, with `regex` library installed
 
 #### Quantification
 Nothing! Can module load STAR and cutadapt on HPC.
 
 #### Analysis
 - R with `tidyverse`, `rtracklayer`, `ggrepel`, `ComplexHeatmap`, (install using BiocManager i.e. `BiocManager::install("ComplexHeatmap")`), `optparse` (to grab gene names from miRNA GTF)
-- python with `pandas`, `seaborn`, `matplotlib`, `sklearn`, `argparse`, `pydeseq2`, `pyranges` (to grab gene names from miRNA GTF)
+- python with `pandas`, `seaborn`, `matplotlib`, `sklearn`, `argparse`, `pydeseq2`
 
 ## Demultiplexing
 
@@ -32,7 +31,7 @@ Library structure deviates from standard Illumina, so samples must be demultiple
 scp /home/sharing/runs/231006_VH00582_82_AACYV55M5/Analysis/1/Data/fastq/*.fastq.gz erebboah@hpc3.rcic.uci.edu:/pub/erebboah/mirna_pipeline/fastq/run_1080
 ```
 
-2. Concatenate all reads to undetermined.fastq.gz and unzip, making sure you have enough space. Need 24G for a P1 100 cycle kit, x2 since you'll basically be copying it to demultiplex = 48G. If you clean up all files at the end (undetermined.fastq.gz and all the individual sample output directories, just keeping the counts directory), you'll only need ~5G, mostly for the demultiplexed fastqs.
+2. Concatenate all reads to undetermined.fastq.gz. You'll need 20G for a P2 100 cycle kit, x2 since you'll basically be copying it to demultiplex = 40G.
 
 ```
 cd /pub/erebboah/mirna_pipeline/fastq/
@@ -42,27 +41,27 @@ gunzip undetermined.fastq.gz
 
 3. Edit the "real" sample sheet. The first column is the 5' Adaptor ID (1-7) and forward primer index ID (1-12, 14, 15, 18, 21-25) separated by an underscore. The second column is your desired fastq name (sample ID). No header! Preferably matches some sample ID in your metadata. Should be in the same directory as the scripts. [Example of samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv)
 
-4. Edit [demux_mirna.sh](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/demux_mirna.sh) so that you are using your HPC account (change `#SBATCH -A SEYEDAM_LAB`) and your conda environment (change `source ~/miniconda3/bin/activate seqtkpython3`). As inputs, you need fastq named `undetermined.fastq` in the fastq directory of this repo (e.g. `/pub/erebboah/mirna_pipeline/fastq/`) and your [samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv) in the scripts directory (e.g. `/pub/erebboah/mirna_pipeline/scripts/`). 
+4. Edit [demux_mirna.sh](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/demux_mirna.sh) so that you are using your HPC account (change `#SBATCH -A SEYEDAM_LAB`) and specify your conda environment, if needed. As inputs, you need fastq named `undetermined.fastq.gz` in the fastq directory of this repo (e.g. `/pub/erebboah/mirna_pipeline/fastq/`) and your [samplesheet.csv](https://github.com/erebboah/mirna_pipeline/blob/master/scripts/samplesheet.csv) in the scripts directory (e.g. `/pub/erebboah/mirna_pipeline/scripts/`). 
 
-5. Run demultiplexing bash script: `sbatch demux_mirna.sh`. Output is demultiplexed, gzipped fastqs with sample IDs in samplesheet.csv, in the fastq directory along with undetermined.fastq.gz.
+5. Run demultiplexing bash script: `sbatch demux_mirna.sh`. Output is demultiplexed, gzipped fastqs with sample IDs in samplesheet.csv, in the fastq directory along with undetermined.fastq.gz. As a warning, this code is slow. I sped it up by splitting the fastq and running in parallel on HPC. 
 
 ## Quantification
 ### Make STAR reference - only have to do this once
-1. Download microRNA GENCODE GTFs from ENCODE portal: [vM21 mouse](https://www.encodeproject.org/files/ENCFF094ICJ/) or [v29 human](https://www.encodeproject.org/files/ENCFF470CZH/).
+1. Download GENCODE GTFs from IGVF portal: [vM36 mouse](https://data.igvf.org/curated-sets/IGVFDS5798ODGM/) or [v43 human](https://data.igvf.org/curated-sets/IGVFDS0280IQAI/).
 
 ```
-wget https://www.encodeproject.org/files/ENCFF094ICJ/@@download/ENCFF094ICJ.gtf.gz
-wget https://www.encodeproject.org/files/ENCFF470CZH/@@download/ENCFF470CZH.gtf.gz
-mv ENCFF094ICJ.gtf.gz mm10_mirna.gtf.gz
-mv ENCFF470CZH.gtf.gz hg38_mirna.gtf.gz
+wget https://api.data.igvf.org/reference-files/IGVFFI4777RDZK/@@download/IGVFFI4777RDZK.gtf.gz
+wget https://api.data.igvf.org/reference-files/IGVFFI9573KOZR/@@download/IGVFFI9573KOZR.gtf.gz
+mv IGVFFI4777RDZK.gtf.gz mm10_mirna.gtf.gz
+mv IGVFFI9573KOZR.gtf.gz hg38_mirna.gtf.gz
 gunzip *.gtf.gz
 ```
 
 2. Download reference sequences from the portal: [mm10 mouse](https://www.encodeproject.org/files/mm10_no_alt_analysis_set_ENCODE/) or [hg38 human](https://www.encodeproject.org/files/GRCh38_no_alt_analysis_set_GCA_000001405.15/).
 
 ```
-wget https://www.encodeproject.org/files/mm10_no_alt_analysis_set_ENCODE/@@download/mm10_no_alt_analysis_set_ENCODE.fasta.gz
-wget https://www.encodeproject.org/files/GRCh38_no_alt_analysis_set_GCA_000001405.15/@@download/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta.gz
+wget https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.fa.gz
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.15_GRCh38/seqs_for_alignment_pipelines.ucsc_ids/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.gz
 
 gunzip *.fasta.gz
 ```
@@ -124,3 +123,6 @@ Other than counts, you may be interested in the STAR report (e.g. `ENC4_453_SB/s
 2. `sbatch make_ref.sh` (only need to run once to generate references!)
 3. `sbatch trim_map.sh mm10` (e.g. for mouse samples)
 4. Analysis in R and/or python.
+
+## Todo
+1. Speed up demultiplexing code / add fastq splitting module
