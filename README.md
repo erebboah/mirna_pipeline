@@ -2,7 +2,7 @@
 ## Overview
 MicroRNA-seq libraries are built using the [ENCODE protocol](https://www.encodeproject.org/documents/49f43842-5ab4-4aa1-a6f4-2b1234955d93/@@download/attachment/Multiplexed%20miRNA%20Sequencing%20Library%20Generation%20Protocol-3.4.pdf) "Multiplexed miRNA Sequencing Library Generation Protocol".
 
-Briefly, libraries are built from 300 ng to 1 ug of total RNA. Adapters are ligated to the 5’ and 3’ ends of small RNAs using their 5’ phosphate and 3’ hydroxyl groups, then the ligation product is reverse transcribed. The 5’ adapter adds a 6-nucleotide barcode from a one of 7 sets of 4 distinct barcodes used in downstream demultiplexing. The cDNA is amplified with 58 bp reverse and 55 bp forward primers containing additional 6-nucleotide barcodes added to the 3’ end. The 140 bp product containing mature microRNA (21-25 nucleotides) is size-selected using 10% TBE-Urea gel. 
+Briefly, libraries are built from 300 ng to 1 ug of total RNA. Adapters are ligated to the 5’ and 3’ ends of small RNAs using their 5’ phosphate and 3’ hydroxyl groups, then the ligation product is reverse transcribed. The 5’ adapter adds a 6-nucleotide barcode from one of 7 sets of 4 distinct barcodes used in downstream demultiplexing. The cDNA is amplified with 58 bp reverse and 55 bp forward primers containing additional 6-nucleotide barcodes added to the 3’ end. The 140 bp product containing mature microRNA (21-25 nucleotides) is size-selected using 10% TBE-Urea gel. 
 
 Libraries are isolated from the TBE-Urea gel by agitated incubation at 70°C, 1000 RPM for 2 hours in a buffer containing 0.5 M ammonium acetate, 0.1% SDS, and 0.1 uM EDTA, then precipitated overnight in 50% isopropanol. 
 
