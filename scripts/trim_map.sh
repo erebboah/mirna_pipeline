@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name=map    ## Name of the job
 #SBATCH -A SEYEDAM_LAB            ## account to charge 
-#SBATCH -p standard               ## partition/queue name
+#SBATCH -p free               ## partition/queue name
 #SBATCH --nodes=1                 ## (-N) number of nodes to use
-#SBATCH --array=1-7              ## number of tasks to launch (number of samples)
+#SBATCH --array=1-24              ## number of tasks to launch (number of samples)
 #SBATCH --cpus-per-task=16         ## number of cores the job needs
 #SBATCH --output=map-%J.out ## output log file
 #SBATCH --error=map-%J.err ## error log file
 
-inpath="/pub/erebboah/mirna_pipeline/"
+inpath="/share/crsp/lab/seyedam/erebboah/mirna_pipeline/"
 genome=$1 # either hg38 or mm10
 
 # Check if the correct number of arguments is provided
